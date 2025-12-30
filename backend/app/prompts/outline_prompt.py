@@ -3,12 +3,19 @@ from langchain_core.prompts import PromptTemplate
 outline_prompt = PromptTemplate(
     input_variables=["title", "keywords", "tone"],
     template="""
-    Create a detailed blog outline.
+    Create a comprehensive and detailed blog outline for the following topic.
 
     Title: {title}
     Tone: {tone}
     Keywords: {keywords}
 
-    Use H2 and H3 headings.
+    Output Format:
+    [SECTION] Main Title
+    [SUBTOPIC] Specific point
+    [SUBTOPIC] Specific point
+    [SECTION] Next Main Title
+    ...
+    
+    DO NOT use actual numbers (1, 2, 3). Use the labels above.
     """
 )
