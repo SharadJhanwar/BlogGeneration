@@ -1,9 +1,22 @@
 from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_tavily import TavilySearch
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import time
 
 load_dotenv()
+
+def safe_tavily_search(query: str, retries: int = 2) -> str:
+    search = TavilySearch()
+
+    for attempt in range(retries):
+        try:
+            return search.invoke(query)
+        except Exception as e:
+            if attempt < retries - 1:
+                time.sleep(2)  # wait before retry
+            else:
+                return f"No real-time search data available due to network timeout. Error: {e}"
 
 def safe_duckduckgo_search(query: str, retries: int = 2) -> str:
     search = DuckDuckGoSearchRun()
@@ -19,7 +32,8 @@ def safe_duckduckgo_search(query: str, retries: int = 2) -> str:
 
 def generate_seo_blog(topic: str, tone: str, language: str) -> str:
     # 1. Get real-time context safely
-    search_results = safe_duckduckgo_search(topic)
+    # search_results = safe_duckduckgo_search(topic)
+    search_results = safe_tavily_search(topic)
 
     # 2. Initialize LLM
     llm = ChatOpenAI(
