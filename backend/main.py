@@ -18,6 +18,7 @@ from app.api.v1.blog import router as blog_router
 from app.api.v1.blog2 import router as blog2_router
 from app.api.v1.blog3 import router as blog3_router
 from app.api.v1.images import router as images_router
+from app.api.v1.export import router as export_router
 
 @app.get("/")
 def root():
@@ -37,3 +38,4 @@ app.include_router(blog_router)
 app.include_router(blog2_router)
 app.include_router(blog3_router)
 app.include_router(images_router)
+app.include_router(export_router)

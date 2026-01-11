@@ -55,7 +55,7 @@ export default function GenerateBlog() {
           {/* Editor */}
           <div className="lg:col-span-2 space-y-6">
             <div className="sticky top-6 z-10">
-              <EditorToolbar blogData={blogData} />
+              <EditorToolbar blogData={blogData} editorRef={editorRef} />
             </div>
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
               <BlogEditor
