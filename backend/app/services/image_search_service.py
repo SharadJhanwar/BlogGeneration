@@ -64,7 +64,10 @@ def generate_images_service(data):
     })
     
     # 2. Generate Image Topics from Outline
-    topics_raw = image_topic_chain.invoke({"outline": outline})
+    topics_raw = image_topic_chain.invoke({
+        "outline": outline,
+        "title": data.title
+    })
     topics = [t.strip("- ").strip() for t in topics_raw.split("\n") if t.strip()]
     
     # 3. Search Images (taking first few topics to get a mix)
