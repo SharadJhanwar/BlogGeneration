@@ -1,8 +1,8 @@
+import GenerateBlog from "./pages/GenerateBlog";
+
 const App = () => {
   return (
-    <div>
-      <h1>AI Blog Generator</h1>
-    </div>
+    <GenerateBlog />
   )
 }
 

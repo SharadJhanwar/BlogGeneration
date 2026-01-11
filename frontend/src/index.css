@@ -1,1 +1,11 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+.ck-editor__editable {
+  min-height: 400px;
+  line-height: normal;
+}
+
+.ck-content {
+  font-family: inherit;
+}
